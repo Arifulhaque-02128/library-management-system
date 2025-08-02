@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const AllBooks = () => {
 //   console.log("ALL BOOKS :::", allBooks);
   const allBooks = useSelector((state : any) => state.bookData.books);
-  console.log("BOOKS :::", allBooks);
+//   console.log("BOOKS :::", allBooks);
 
   const router = useRouter();
 

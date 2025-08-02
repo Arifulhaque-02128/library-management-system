@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast';
-import { useSelector } from 'react-redux';
 
 type BorrowStatus =
   | 'PENDING'
@@ -37,10 +36,8 @@ interface BorrowBook {
 const BorrowedBooks = ({ borrowedBooks } : BorrowBook) => {
 
 //   console.log("ALL Borrowed BOOKS :::", borrowedBooks);
-  const allBooks = useSelector((state : any) => state.bookData.books);
+//   const allBooks = useSelector((state : any) => state.bookData.books);
 //   console.log("BOOKS :::", allBooks);
-
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
   const [rejectBook, { isLoading : isRejectLoading, isSuccess : isRejectSuccess, isError : isRejectError }] = useRejectBorrowReqByIdMutation();
 
@@ -164,7 +161,7 @@ const BorrowedBooks = ({ borrowedBooks } : BorrowBook) => {
                                 <tr key={book._id} className="hover:bg-gray-100 border-0 shadow font-semibold">
                                     <td className="px-4 py-2 flex flex-row items-center space-x-2">
                                         <Image src={book.coverUrl} width={30} height={20} alt="Service" className="object-contain" />
-                                        <Link href={`${baseUrl}/admin/books/${book._id}`} className='hover:underline'> {book.title} </Link>
+                                        <Link href={`/admin/books/${book.book_id}`} className='hover:underline'> {book.title} </Link>
                                     </td>
                                     <td className="px-4 py-2">
                                         <p> {book.username} </p>

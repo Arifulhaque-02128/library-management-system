@@ -47,7 +47,7 @@ const SingleBook = ({ bookData, UI } : SingleBookProps) => {
         <header className='flex flex-wrap gap-8'>
 
             {/* book cover */}
-            <div className={cn(`relative flex flex-1 justify-center p-6 max-w-[300] items-center rounded-md bg-opacity-20`)} 
+            <div className={cn(`relative flex flex-1 justify-center p-6 max-w-[300px] items-center rounded-md bg-opacity-20`)} 
             // @ts-ignore
             style={{ backgroundColor: hexToRGBA(coverColor, 0.9) }}>
                 <div className='relative'>
@@ -93,7 +93,7 @@ const SingleBook = ({ bookData, UI } : SingleBookProps) => {
 
                 {
                     isAdmin &&
-                    <Button className={cn('bg-blue-800 text-white hover:bg-blue-900 py-4')} asChild>
+                    <Button className={cn('bg-blue-800 text-white hover:bg-blue-900 py-4 max-w-[300px]')} asChild>
                         <Link href={`/admin/books/edit/${_id}`}> Edit Book </Link>
                     </Button>
                 }

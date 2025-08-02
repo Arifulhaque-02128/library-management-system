@@ -9,7 +9,7 @@ const BorrowRecordPage = () => {
   const { data : books, isLoading, isError } = useGetAllBorrowedBooksQuery(`/api/borrowBook/`, {
     refetchOnMountOrArgChange : true
   });
-  console.log("Borrow Books :::", books);
+  // console.log("Borrow Books :::", books);
 
   useEffect(() => {
     if(isError) {

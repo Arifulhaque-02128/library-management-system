@@ -69,7 +69,7 @@ const ProfilePage = () => {
     <section className='grid grid-cols-1 max-w-8xl justify-evenly gap-8 lg:grid-cols-2'>
       
       {/* Profile Info */}
-      <div className='flex flex-col gap-12 bg-dark-400 p-8 rounded-lg max-w-xl max-h-[550]'>
+      <div className='flex flex-col gap-12 bg-dark-400 p-8 rounded-lg max-w-xl max-h-[550px]'>
 
         <div className='flex flex-row items-center gap-2'>
           <div
@@ -122,7 +122,7 @@ const ProfilePage = () => {
 
 
       {/* Borrowed Books */}
-      <div className='min-w-[350] rounded-md'>
+      <div className='min-w-[350px] rounded-md'>
         <h1 className='text-xl text-light-100 mb-6'>Borrowed Books</h1>
 
         {
@@ -139,11 +139,11 @@ const ProfilePage = () => {
               {
                 books?.data?.map((book : BorrowedBook) => {
                   return (
-                    <div key={book._id} className='bg-dark-100 p-4 rounded w-[280] cursor-pointer'
+                    <div key={book._id} className='bg-dark-100 p-4 rounded w-[280px] cursor-pointer'
                     onClick={ () => router.push(`/books/${book.book_id}`)}
                     > 
                       {/* book cover */}
-                      <div className="relative flex flex-1 justify-center w-[200] p-6 items-center rounded-md"
+                      <div className="relative flex flex-1 justify-center w-[200px] p-6 items-center rounded-md"
                       // @ts-ignore
                       style={{ backgroundColor: hexToRGBA(book.coverColor, 0.5) }}>
                           <div className='relative'>

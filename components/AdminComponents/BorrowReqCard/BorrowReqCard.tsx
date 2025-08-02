@@ -12,8 +12,6 @@ const BorrowReqCard = () => {
 
   const [allReqs, setAllReqs] = useState([]);
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-
   useEffect(() => {
     if(isError) {
         toast.error("Failed to fetch Books.")
@@ -28,7 +26,7 @@ const BorrowReqCard = () => {
 //   console.log("Borrow Books :::", allReqs);
 
   return (
-    <section className='w-full bg-white p-7 rounded-xl min-h-[400]'>
+    <section className='w-full bg-white p-7 rounded-xl min-h-[400px]'>
         <Toaster />
 
         <div className='flex flex-wrap justify-between items-center gap-2'>
@@ -51,7 +49,7 @@ const BorrowReqCard = () => {
                         <div className="px-4 py-2 flex flex-row items-center space-x-2 gap-3">
                             <Image src={req.coverUrl} width={50} height={50} alt="Service" className="object-contain" />
                             <div>
-                                <Link href={`${baseUrl}/admin/books/${req._id}`} className='hover:underline text-xl font-semibold text-dark-100'> {req.title} </Link>
+                                <Link href={`/admin/books/${req.book_id}`} className='hover:underline text-xl font-semibold text-dark-100'> {req.title} </Link>
                                 <p className='text-gray-600'> By {req.author}  </p>
                                 <div className='flex flex-row mt-2 gap-2 items-center'>
                                     <div

@@ -23,7 +23,7 @@ const AccountReqCard = () => {
   };
 
   return (
-    <section className='w-full bg-white p-7 rounded-xl min-h-[400]'>
+    <section className='w-full bg-white p-7 rounded-xl min-h-[400px]'>
         <Toaster />
 
         <div className='flex flex-wrap justify-between items-center gap-2'>
