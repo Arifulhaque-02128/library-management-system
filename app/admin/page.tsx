@@ -1,6 +1,12 @@
 import AccountReqCard from '@/components/AdminComponents/AccountReqCard/AccountReqCard';
 import BorrowReqCard from '@/components/AdminComponents/BorrowReqCard/BorrowReqCard';
+import { Metadata } from 'next';
 import React from 'react'
+
+export const metadata: Metadata = {
+  title: "Admin Dashboard | Bookari",
+  description: "A Digital Library Management System",
+};
 
 const getAllUsers = async () => {
 

@@ -1,43 +1,32 @@
-'use client'
-// @ts-ignore
-import SingleBook from '@/components/AdminComponents/SingleBook';
-import { Button } from '@/components/ui/button';
-import { useGetBookByIdQuery } from '@/lib/Redux/features/handleApi';
-import Link from 'next/link';
-import { useParams } from 'next/navigation';
-import React from 'react'
+import { Metadata } from 'next';
+import SingleBookPage from './SingleBookPage';
 
+const getSingleBook = async (id: string) => {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const res = await fetch(`${baseUrl}/api/books/${id}`, {
+    cache: 'no-store',
+  });
 
-const SingleBookPage = ( ) => {
+  if (!res.ok) {
+    throw new Error("Failed to fetch book data");
+  }
 
-  const { id } = useParams();
+  const bookData = await res.json();
+  return bookData?.data; 
+};
 
-  const { data : book, isLoading, isError } = useGetBookByIdQuery(`/api/books/${id}`);
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+  const { id } = params;
+  const bookInfo = await getSingleBook(id);
 
-  console.log("Book :::", book?.data);
-
-  return (
-    <div> 
-        <Link href={'/admin/books'}>
-            <Button className='back-btn'>
-                Go Back
-            </Button>
-        </Link>
-
-        {/* Single Boook */}
-        <div className='w-full mt-7 min-h-[300px]'>
-        {
-            isLoading ? (
-                <div className="flex items-center justify-center">
-                    <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin border-primary-admin"></div>
-                </div>
-            ) : ( !isError &&
-                <SingleBook bookData={book?.data} UI='ADMIN'/>
-            )
-        }
-        </div>
-    </div>
-  )
+  return {
+    title: `${bookInfo?.title} | Bookari` || "Book | Bookari",
+    description: bookInfo?.description || "A Digital Library Management System",
+  };
 }
 
-export default SingleBookPage
+const Page = async () => {
+  return <SingleBookPage /> ;
+};
+
+export default Page;
