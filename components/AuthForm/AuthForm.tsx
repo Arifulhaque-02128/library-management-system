@@ -36,7 +36,7 @@ function AuthForm <T extends FieldValues> ({ authType, schema, defaultValues}: P
   const router = useRouter();
 
  const handleSubmit: SubmitHandler<T> = async (data : T) => {
-    console.log(data); 
+    // console.log(data); 
 
     if(!haveAccount) {
         const res = await fetch("/api/createUser", {
@@ -50,7 +50,7 @@ function AuthForm <T extends FieldValues> ({ authType, schema, defaultValues}: P
         const result = await res.json();
 
         if(res?.ok){
-            console.log("CLIENT :::", result);
+            // console.log("CLIENT :::", result);
             form.reset();
             toast.success(result?.message || "User created successfully");
 
@@ -62,7 +62,7 @@ function AuthForm <T extends FieldValues> ({ authType, schema, defaultValues}: P
             });
 
             if(res2?.ok){
-                console.log("sign in :::", res2);
+                // console.log("sign in :::", res2);
                 router.push("/");
                 toast.success("User Singned In successfully");
 
@@ -86,7 +86,7 @@ function AuthForm <T extends FieldValues> ({ authType, schema, defaultValues}: P
         });
 
         if(res?.ok){
-            console.log("sign in :::", res);
+            // console.log("sign in :::", res);
             form.reset();
             router.push("/");
             toast.success("User Signed In successfully");

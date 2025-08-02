@@ -81,7 +81,7 @@ const BorrowedBooks = ({ borrowedBooks } : BorrowBook) => {
 
     const payload = {...book, borrow_status : borrowStatus, returnDate : returnDate.toISOString()};
 
-    console.log("Payload :::", payload);
+    // console.log("Payload :::", payload);
     try {
       await returnBookReq({id : _id, data : payload});
     } catch (err) {

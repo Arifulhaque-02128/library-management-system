@@ -17,7 +17,7 @@ const BorrowReqCard = () => {
         toast.error("Failed to fetch Books.")
     }
     if(isSuccess) {
-        console.log("data :::", books?.data);
+        // console.log("data :::", books?.data);
         const borrowReq = books?.data?.filter((req : any) => req.borrow_status === "PENDING");
         setAllReqs(borrowReq);
     }
@@ -41,7 +41,7 @@ const BorrowReqCard = () => {
               <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin border-primary-admin"></div>
             </div>
           ) : ( (!isError && allReqs.length === 0) ?
-            <p className='text-gray-900'> No Borrow Request Found </p>
+            <p className='text-gray-900 text-center mt-12'> No Borrow Request Found </p>
             :
             allReqs.map((req : any) => {
                 return (

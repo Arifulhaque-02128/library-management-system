@@ -59,7 +59,7 @@ function BookForm <T extends FieldValues> ({ formType, schema, defaultValues}: P
         const result = await res.json();
 
         if(res?.ok){
-            console.log("CLIENT :::", result);
+            // console.log("CLIENT :::", result);
             form.reset();
             setIsLoading(false);
             toast.success(result?.message || "Book inserted successfully");
@@ -76,7 +76,7 @@ function BookForm <T extends FieldValues> ({ formType, schema, defaultValues}: P
         const res : any = await updateBook({ id: defaultValues._id, data : payload });
 
         if(res?.data?.message){
-            console.log("CLIENT :::", res);
+            // console.log("CLIENT :::", res);
             form.reset();
             setIsLoading(false);
             toast.success(res?.data?.message || "Book updated successfully");

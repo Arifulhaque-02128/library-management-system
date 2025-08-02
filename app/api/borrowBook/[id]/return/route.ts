@@ -6,12 +6,15 @@ import { NextRequest } from "next/server";
 export const PUT = async (req: NextRequest, { params }: any) => {
   const { id } = await  params;
   const body = await req.json();
-  const { bookId } = body;
+
+  const { book_id : bookId } = body;
+
+  const {_id, ...rest} = body;
 
   const returnDate = new Date().toISOString();
 
   const payload = {
-    ...body,
+    ...rest,
     returnDate: body.returnDate ?? returnDate,
   };
 
