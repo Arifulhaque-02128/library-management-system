@@ -2,6 +2,8 @@ import BookList from "@/components/BookList/BookList";
 import BookOverview from "@/components/BookOverview/BookOverview";
 import { Metadata } from "next";
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: "Home Page | Bookari",
   description: "A Digital Library Management System",

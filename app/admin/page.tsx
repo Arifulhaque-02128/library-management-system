@@ -3,6 +3,8 @@ import BorrowReqCard from '@/components/AdminComponents/BorrowReqCard/BorrowReqC
 import { Metadata } from 'next';
 import React from 'react'
 
+export const dynamic = 'force-dynamic';
+
 interface DashboardCard {
   amount: number;
   cardTitle: string;
