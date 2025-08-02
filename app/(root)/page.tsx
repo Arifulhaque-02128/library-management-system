@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 const getAllBooks = async () => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
-  const res = await fetch(baseUrl+"/api/books");
+  const res = await fetch(`${baseUrl}/api/books`);
 
   if(res?.ok){
     return res.json();
