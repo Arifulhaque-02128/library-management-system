@@ -1,9 +1,8 @@
 import Header from '@/components/Header/Header'
 import React, { ReactNode } from 'react'
 
-import { Inter, Poppins } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] });
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '600', '700'] });
 
 const Layout = ({children} : {children : ReactNode}) => {

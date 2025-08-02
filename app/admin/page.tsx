@@ -3,6 +3,12 @@ import BorrowReqCard from '@/components/AdminComponents/BorrowReqCard/BorrowReqC
 import { Metadata } from 'next';
 import React from 'react'
 
+interface DashboardCard {
+  amount: number;
+  cardTitle: string;
+}
+
+
 export const metadata: Metadata = {
   title: "Admin Dashboard | Bookari",
   description: "A Digital Library Management System",
@@ -16,7 +22,6 @@ const getAllUsers = async () => {
     return res.json();
   }
   console.log(res);
-  return 
   
 };
 
@@ -28,7 +33,6 @@ const getAllBooks = async () => {
     return res.json();
   }
   console.log(res);
-  return 
   
 };
 
@@ -40,7 +44,6 @@ const getAllBorrowedBooks = async () => {
     return res.json();
   }
   console.log(res);
-  return 
 };
 
 const AdminPage = async () => {
@@ -57,7 +60,7 @@ const AdminPage = async () => {
   const totalBorrowBooks = allBorrowBooks?.data?.length;
   // console.log("Total Borrow Books :::", totalBorrowBooks);
 
-  let cardItems : any = [];
+  let cardItems : DashboardCard[] = [];
 
   if((totalBooks >= 0 ) && (totalUsers >= 0 ) && (totalBorrowBooks >= 0 )) {
     cardItems = [{ amount : totalUsers, cardTitle : "Total Users" }, { amount : totalBooks, cardTitle : "Total Books" }, { amount : totalBorrowBooks, cardTitle : "Borrow Books"}];
@@ -68,7 +71,7 @@ const AdminPage = async () => {
       {/* Top Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full">
         {cardItems?.length !== 0 &&
-          cardItems?.map((item: any) => (
+          cardItems?.map((item: DashboardCard) => (
             <div key={item.cardTitle} className="bg-white py-6 px-6 rounded-md w-full">
               <h1 className="text-xl font-semibold text-dark-600">{item.cardTitle}</h1>
               <p className="text-2xl font-bold text-dark-100 mt-4">{item.amount}</p>

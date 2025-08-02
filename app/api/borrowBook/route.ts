@@ -3,7 +3,7 @@ import { ObjectId } from "mongodb";
 import { NextRequest } from "next/server";
 
 
-export const GET = async (req : NextRequest) => {
+export const GET = async () => {
 
     try {
         const collection = await dbConnect('borrowed_books');
@@ -26,11 +26,11 @@ export const GET = async (req : NextRequest) => {
 export const POST = async (req: NextRequest) => {
   try {
     const body = await req.json();
-    const { user_email, book_id } = body;
+    const { user_email : userEmail , book_id : bookId} = body;
 
     // console.log("BODY :::", body);
 
-    if (!user_email || !book_id) {
+    if (!userEmail || !bookId) {
       return Response.json({ message: "Missing email or book ID" }, { status: 400 });
     }
 
@@ -38,13 +38,13 @@ export const POST = async (req: NextRequest) => {
     const bookCollection = await dbConnect("books");
     const borrowedBookCollection = await dbConnect("borrowed_books");
 
-    const user = await userCollection.findOne({ email: user_email });
+    const user = await userCollection.findOne({ email: userEmail });
     // console.log("USER :::", user);
     if (!user || user.user_status !== "APPROVED") {
       return Response.json({ message: "User not found or not approved" }, { status: 403 });
     }
 
-    const bookObjectId = new ObjectId(book_id);
+    const bookObjectId = new ObjectId(bookId);
     const book = await bookCollection.findOne({ _id: bookObjectId });
 
     // console.log("BOOK :::", book);
@@ -53,8 +53,8 @@ export const POST = async (req: NextRequest) => {
     }
 
     const alreadyBorrowed = await borrowedBookCollection.findOne({
-        user_email: user_email,
-        book_id: book_id,
+        user_email: userEmail,
+        book_id: bookId,
         borrow_status: { $in: ["PENDING", "BORROWED"] }
     });
 
@@ -71,7 +71,7 @@ export const POST = async (req: NextRequest) => {
 
     // Update user -> increment borrowedBooks
     await userCollection.updateOne(
-      { email: user_email },
+      { email: userEmail },
       { $inc: { borrowedBooks: 1 } }
     );
 

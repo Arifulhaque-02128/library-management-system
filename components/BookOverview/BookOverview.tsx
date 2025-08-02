@@ -12,7 +12,7 @@ interface BookProps extends Book {
 }
 
 
-const BookOverview = ({ _id, title, author, genre, rating, totalCopies, availableCopies, description, coverUrl, coverColor, pageRoute} : BookProps) => {
+const BookOverview = ({ _id, title, author, genre, rating, availableCopies, description, coverUrl, coverColor, pageRoute} : BookProps) => {
   
   const isHomePage = pageRoute === "HOME";
 

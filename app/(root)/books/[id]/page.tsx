@@ -1,11 +1,15 @@
-import { Metadata, ResolvingMetadata } from 'next';
+import { Metadata } from 'next';
 import SingleBookClient from './SingleBookClient';
+
+type BookPageParams = {
+  params: {
+    id: string;
+  };
+};
 
 const getSingleBook = async (id: string) => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-  const res = await fetch(`${baseUrl}/api/books/${id}`, {
-    cache: 'no-store', 
-  });
+  const res = await fetch(`${baseUrl}/api/books/${id}`, { cache: 'no-store' });
 
   if (!res.ok) {
     throw new Error("Failed to fetch book data");
@@ -15,12 +19,15 @@ const getSingleBook = async (id: string) => {
   return bookData?.data; 
 };
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
 
-  const bookInfo = await getSingleBook(params.id);
+export async function generateMetadata(
+  { params }: BookPageParams
+): Promise<Metadata> {
+  const { id } = await params;
+  const bookInfo = await getSingleBook(id);
 
   return {
-    title: `${bookInfo?.title} | Bookari` || "Book | Bookari",
+    title: bookInfo?.title ? `${bookInfo.title} | Bookari` : "Book | Bookari",
     description: bookInfo?.description || "A Digital Library Management System",
   };
 }

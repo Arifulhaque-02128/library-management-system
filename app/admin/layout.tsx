@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react'
 import '@/app/style/admin.css'
 import Sidebar from '@/components/AdminComponents/Sidebar'
-import { getServerSession } from 'next-auth'
 import AdminHeader from '@/components/AdminComponents/AdminHeader'
 
 const AdminLayout = ({children} : {children : ReactNode}) => {

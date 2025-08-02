@@ -93,6 +93,9 @@ importers:
       eslint-config-next:
         specifier: 15.1.2
         version: 15.1.2(eslint@9.31.0(jiti@1.21.7))(typescript@5.8.3)
+      eslint-config-prettier:
+        specifier: ^10.1.8
+        version: 10.1.8(eslint@9.31.0(jiti@1.21.7))
       eslint-config-standard:
         specifier: ^17.1.0
         version: 17.1.0(eslint-plugin-import@2.32.0)(eslint-plugin-n@17.21.3(eslint@9.31.0(jiti@1.21.7))(typescript@5.8.3))(eslint-plugin-promise@7.2.1(eslint@9.31.0(jiti@1.21.7)))(eslint@9.31.0(jiti@1.21.7))
@@ -1003,6 +1006,12 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
+
+  eslint-config-prettier@10.1.8:
+    resolution: {integrity: sha512-82GZUjRS0p/jganf6q1rEO25VSoHH0hKPCTrgillPjdI/3bgBhAE1QzHrHTizjpRvy6pGAvKjDJtk2pF9NDq8w==}
+    hasBin: true
+    peerDependencies:
+      eslint: '>=7.0.0'
 
   eslint-config-standard@17.1.0:
     resolution: {integrity: sha512-IwHwmaBNtDK4zDHQukFDW5u/aTb8+meQWZvNFWkiGmbWjD6bqyuSSBxxXKkCftCUzc1zwCH2m/baCNDLGmuO5Q==}
@@ -3166,6 +3175,10 @@ snapshots:
       - eslint-import-resolver-webpack
       - eslint-plugin-import-x
       - supports-color
+
+  eslint-config-prettier@10.1.8(eslint@9.31.0(jiti@1.21.7)):
+    dependencies:
+      eslint: 9.31.0(jiti@1.21.7)
 
   eslint-config-standard@17.1.0(eslint-plugin-import@2.32.0)(eslint-plugin-n@17.21.3(eslint@9.31.0(jiti@1.21.7))(typescript@5.8.3))(eslint-plugin-promise@7.2.1(eslint@9.31.0(jiti@1.21.7)))(eslint@9.31.0(jiti@1.21.7)):
     dependencies:

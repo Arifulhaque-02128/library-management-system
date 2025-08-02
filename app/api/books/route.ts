@@ -1,18 +1,16 @@
 import dbConnect from "@/lib/dbConnect";
 import { NextRequest } from "next/server";
 
-
 export const GET = async () => {
   try {
     const collection = await dbConnect("books");
     const allBooks = await collection.find({}).toArray();
-
-    return Response.json({data : allBooks}, {status : 200});
+    return Response.json({ data: allBooks }, { status: 200 });
   } catch (error) {
     console.error("SERVER ERROR :::", error);
     return Response.json({ message: "Something went wrong" }, { status: 500 });
   }
-}
+};
 
 export const POST = async (req: NextRequest) => {
   try {
@@ -20,23 +18,21 @@ export const POST = async (req: NextRequest) => {
 
     const payload = {
       ...body,
-      isLoanedBook: body.isLoanedBook ?? (body?.totalCopies > 0 ? false : true),
-      availableCopies : body.availableCopies ?? body.totalCopies,
+      isLoanedBook: body.isLoanedBook ?? body.totalCopies <= 0,
+      availableCopies: body.availableCopies ?? body.totalCopies,
       createdAt: body.createdAt ?? new Date(),
     };
-
-    // console.log("BODY :::", payload);
 
     const collection = await dbConnect("books");
     const res = await collection.insertOne(payload);
 
-    // console.log("SERVER :::", res);
-
-    return Response.json({
-      data: res,
-      message: "Book inserted successfully."
-    }, { status: 202 });
-
+    return Response.json(
+      {
+        data: res,
+        message: "Book inserted successfully.",
+      },
+      { status: 202 }
+    );
   } catch (error) {
     console.error("SERVER ERROR :::", error);
     return Response.json({ message: "Something went wrong" }, { status: 500 });

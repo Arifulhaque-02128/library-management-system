@@ -8,11 +8,25 @@ import { MdOutlineVerified } from "react-icons/md";
 import { FaBookOpen } from "react-icons/fa";
 import { CiClock2 } from "react-icons/ci";
 
+interface BorrowedBook {
+  _id: string;
+  book_id: string;
+  title: string;
+  author: string;
+  coverColor: string;
+  coverUrl: string;
+  requestDate? : string,
+  borrowDate?: string;
+  dueDate?: string ;
+  returnDate?: string;
+}
+
+
 const ProfilePage = () => {
   const {id} = useParams();
   // console.log("IDDD :::", id);
 
-  const { data : books, isLoading, isSuccess, isError } = useGetBorrowedBookByLibIdQuery(`/api/borrowBook/${id}`);
+  const { data : books, isLoading, isError } = useGetBorrowedBookByLibIdQuery(`/api/borrowBook/${id}`);
 
   const router = useRouter();
 
@@ -52,10 +66,10 @@ const ProfilePage = () => {
   }
 
   return (
-    <section className='flex flex-wrap max-w-8xl justify-evenly'>
+    <section className='grid grid-cols-1 max-w-8xl justify-evenly gap-8 lg:grid-cols-2'>
       
       {/* Profile Info */}
-      <div className='flex flex-col gap-12 bg-dark-400 p-8 rounded-lg max-w-xl'>
+      <div className='flex flex-col gap-12 bg-dark-400 p-8 rounded-lg max-w-xl max-h-[550]'>
 
         <div className='flex flex-row items-center gap-2'>
           <div
@@ -123,7 +137,7 @@ const ProfilePage = () => {
             : 
             <div className='flex flex-wrap gap-4'>
               {
-                books?.data?.map((book : any) => {
+                books?.data?.map((book : BorrowedBook) => {
                   return (
                     <div key={book._id} className='bg-dark-100 p-4 rounded w-[280] cursor-pointer'
                     onClick={ () => router.push(`/books/${book.book_id}`)}

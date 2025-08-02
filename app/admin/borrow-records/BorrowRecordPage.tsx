@@ -6,7 +6,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const BorrowRecordPage = () => {
 
-  const { data : books, isLoading, isSuccess, isError } = useGetAllBorrowedBooksQuery(`/api/borrowBook/`, {
+  const { data : books, isLoading, isError } = useGetAllBorrowedBooksQuery(`/api/borrowBook/`, {
     refetchOnMountOrArgChange : true
   });
   console.log("Borrow Books :::", books);

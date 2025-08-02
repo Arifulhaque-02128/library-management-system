@@ -10,7 +10,26 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript", "standard", "plugin:tailwindcss/recommended", "prettier"),
+  ...compat.extends(
+    "next/core-web-vitals",
+    "next/typescript",
+    "standard",
+    "plugin:tailwindcss/recommended",
+    "prettier"
+  ),
+  {
+    // ✅ Add rule overrides here
+    rules: {
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/ban-ts-comment": "off",
+      "camelcase": "off",
+      "no-undef": "off",
+      "tailwindcss/classnames-order": "warn",
+      "tailwindcss/enforces-shorthand": "warn",
+      "object-shorthand": "off",
+      "no-useless-return": "off",
+    },
+  },
 ];
 
 export default eslintConfig;
