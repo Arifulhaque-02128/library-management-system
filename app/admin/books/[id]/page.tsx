@@ -1,4 +1,4 @@
-import { Metadata, ResolvingMetadata } from 'next';
+import { Metadata } from 'next';
 import SingleBookPage from './SingleBookPage';
 
 const getSingleBook = async (id: string) => {
@@ -15,11 +15,9 @@ const getSingleBook = async (id: string) => {
   return bookData?.data; 
 };
 
-export async function generateMetadata({ params }: { params: { id: string } }, 
-  _parent?: ResolvingMetadata ): Promise<Metadata> {
-    
-  const { id } = params;
-  const bookInfo = await getSingleBook(id);
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+
+  const bookInfo = await getSingleBook(params.id);
 
   return {
     title: `${bookInfo?.title} | Bookari` || "Book | Bookari",

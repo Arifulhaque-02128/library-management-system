@@ -15,11 +15,9 @@ const getSingleBook = async (id: string) => {
   return bookData?.data; 
 };
 
-export async function generateMetadata({ params }: { params: { id: string } }, 
-    _parent?: ResolvingMetadata ): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
 
-  const { id } = params;
-  const bookInfo = await getSingleBook(id);
+  const bookInfo = await getSingleBook(params.id);
 
   return {
     title: `${bookInfo?.title} | Bookari` || "Book | Bookari",
