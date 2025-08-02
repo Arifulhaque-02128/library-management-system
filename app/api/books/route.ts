@@ -1,7 +1,7 @@
 import dbConnect from "@/lib/dbConnect";
 import { NextRequest } from "next/server";
 
-export const GET = async () => {
+export const GET = async (req: NextRequest) => {
   try {
     const collection = await dbConnect("books");
     const allBooks = await collection.find({}).toArray();

@@ -2,7 +2,7 @@ import dbConnect from "@/lib/dbConnect";
 import { ObjectId } from "mongodb";
 import { NextRequest } from "next/server";
 
-export const DELETE = async ({ params }: any ) => {
+export const DELETE = async (req : NextRequest, { params }: any ) => {
     
   const { id } = await params
 

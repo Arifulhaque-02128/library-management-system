@@ -1,6 +1,7 @@
 import dbConnect from "@/lib/dbConnect";
+import { NextRequest } from "next/server";
 
-export const GET = async () => {
+export const GET = async (req: NextRequest) => {
     try {
         const collection = await dbConnect('lib_user');
         const userRequests = await collection.find({ user_status : "APPROVED"}, { projection: { password: 0 } }).toArray();

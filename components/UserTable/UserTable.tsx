@@ -125,7 +125,7 @@ const UserTable = ({ userRequests, refetch, userStatus } : UserReqProps) => {
                             userStatus === "PENDING" ? null : 
                             <th className="px-4 py-2 text-left text-dark-700">Book Borrowed</th>
                         }
-                        <th className="px-4 py-2 text-left text-dark-700">Data Joined</th>
+                        <th className="px-4 py-2 text-left text-dark-700">Date Joined</th>
                         <th className="px-4 py-2 text-left text-dark-700">Library ID</th>
                         <th className="px-4 py-2 text-left text-dark-700">Actions</th>
                     </tr>
