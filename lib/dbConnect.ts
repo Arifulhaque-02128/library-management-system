@@ -2,7 +2,7 @@ import { MongoClient, ServerApiVersion } from 'mongodb';
 
 const dbConnect = async (collectionName : string) => {
 
-  const uri = process.env.MONGODB_URI;
+  const uri = process.env.NEXT_PUBLIC_MONGODB_URI;
   const db = process.env.DB_NAME;
   
   if (!uri) {
