@@ -10,7 +10,9 @@ const BorrowReqCard = () => {
 
   const { data : books, isLoading, isSuccess, isError } = useGetAllBorrowedBooksQuery(`/api/borrowBook/`);
 
-  const [allReqs, setAllReqs] = useState([])
+  const [allReqs, setAllReqs] = useState([]);
+
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
   useEffect(() => {
     if(isError) {
@@ -49,7 +51,7 @@ const BorrowReqCard = () => {
                         <div className="px-4 py-2 flex flex-row items-center space-x-2 gap-3">
                             <Image src={req.coverUrl} width={50} height={50} alt="Service" className="object-contain" />
                             <div>
-                                <Link href={`/admin/books/${req._id}`} className='hover:underline text-xl font-semibold text-dark-100'> {req.title} </Link>
+                                <Link href={`${baseUrl}/admin/books/${req._id}`} className='hover:underline text-xl font-semibold text-dark-100'> {req.title} </Link>
                                 <p className='text-gray-600'> By {req.author}  </p>
                                 <div className='flex flex-row mt-2 gap-2 items-center'>
                                     <div

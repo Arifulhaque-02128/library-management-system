@@ -7,6 +7,15 @@ export default {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    'text-light-100', 'text-light-200', 'text-green-600', 'text-orange-400',
+    'bg-dark-100', 'bg-dark-400', 'border-dark-700',
+    'rounded', 'rounded-md', 'rounded-lg',
+    'w-[280]', 'min-w-[260px]', 'max-w-xs', 'max-w-xl', 'min-w-[350]', 'max-h-[550]', 'min-h-[300px]', 'max-w-[300]',
+    'p-4', 'p-6', 'p-8',
+    'text-xl', 'text-lg', 'font-semibold', 'font-bold'
+  ],
+
   theme: {
     extend: {
       fontFamily: {
