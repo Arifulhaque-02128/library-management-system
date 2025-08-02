@@ -43,7 +43,7 @@ const Header = () => {
             <Link href={'/'}>
                 <Image src={'/icons/logo.svg'} height={40} width={40} alt='logo' />
             </Link>
-            <Link href={'/'}> <h1 className='text-xl font-bold'>Bookaroo</h1> </Link>
+            <Link href={'/'}> <h1 className='text-xl font-bold'>Bookari</h1> </Link>
         </div>
 
         <div className='flex flex-row space-x-4 items-center justify-between'>
